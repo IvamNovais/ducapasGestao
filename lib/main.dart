@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:interno/Login.dart';
+import 'package:interno/pages/Login.dart';
 import 'package:interno/controllers/AppController.dart';
 import 'package:interno/pages/CreateProduto.dart';
 

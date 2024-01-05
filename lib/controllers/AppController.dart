@@ -21,7 +21,7 @@ class AppController extends ChangeNotifier{
                 decoration: const InputDecoration(labelText: 'Mercadoria'),
                 validator: (value)  {
                     if(value == null|| value.isEmpty){
-                      return "preencha a MSrcadoria";
+                      return "preencha a Mercadoria";
                     }
                     return null;
                   },
