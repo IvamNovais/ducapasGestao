@@ -153,7 +153,7 @@ class _CreateProdutoState extends State<CreateProduto> {
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         Produto produto = criarProduto();
-                        ProdutoService().salvarProduto(produto);
+                        ProdutoServices().salvarProduto(produto);
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => const App()),
@@ -166,7 +166,7 @@ class _CreateProdutoState extends State<CreateProduto> {
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         Produto produto = criarProduto();
-                        ProdutoService().salvarProduto(produto);
+                        ProdutoServices().salvarProduto(produto);
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => const App()),

@@ -6,6 +6,7 @@ class AppController extends ChangeNotifier{
   List<Widget> inputFields = [];
   List<TextEditingController> textEditingControllersMercadoria = [];
   List<TextEditingController> textEditingControllersQuatidade = [];
+  String token = '';
   addInput() {
     TextEditingController mercadoria = TextEditingController();
     TextEditingController quantidade = TextEditingController();
@@ -52,5 +53,8 @@ class AppController extends ChangeNotifier{
   changeTheme(){
     isDarkThene=!isDarkThene;
     notifyListeners();
+  }
+  saveToken(String token){
+    this.token = token;
   }
 }

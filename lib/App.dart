@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:interno/pages/Aletas.dart';
+import 'package:interno/pages/Financeiro.dart';
 import 'package:interno/pages/Produtos.dart';
 
 class App extends StatefulWidget {
@@ -12,6 +14,9 @@ class AppState extends State<App> {
   List<Tab> tabs = <Tab>[
     const Tab(text: 'Home'),
     const Tab(text: 'produtos'),
+    const Tab(text: 'Financeiro'),
+    const Tab(text: 'Vendas'),
+    const Tab(text: 'Encomendas'),
   ];
   @override
   Widget build(BuildContext context) {
@@ -19,20 +24,13 @@ class AppState extends State<App> {
         appBar: AppBar(
           title: const Text("Du Capas"),
           backgroundColor: Colors.blue,
+          automaticallyImplyLeading: false,
         ),
         body: DefaultTabController(
           length: tabs.length,
           // The Builder widget is used to have a different BuildContext to access
           // closest DefaultTabController.
           child: Builder(builder: (BuildContext context) {
-            final TabController tabController =
-                DefaultTabController.of(context);
-            tabController.addListener(() {
-              if (!tabController.indexIsChanging) {
-                // Your code goes here.
-                // To get index of current tab use tabController.index
-              }
-            });
             return Scaffold(
               appBar: AppBar(
                 bottom: TabBar(
@@ -41,8 +39,11 @@ class AppState extends State<App> {
               ),
               body: const TabBarView(
                 children: <Widget>[
-                  Text("Primeira guia selecionada"),
-                  Produtos()
+                  Alertas(),
+                  Produtos(),
+                  Financeiro(),
+                  Text('Vendas'),
+                  Text('Encomendas'),
                 ],
               ),
             );

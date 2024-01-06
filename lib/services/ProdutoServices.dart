@@ -1,17 +1,25 @@
 import 'dart:convert';
+import 'package:interno/controllers/AppController.dart';
 import 'package:interno/models/Produto.dart';
 import 'package:http/http.dart' as http;
 
-class ProdutoService {
+class ProdutoServices {
   final String baseUrl = "http://localhost:9000"; // URL base da sua API
 
-
   Future<List<Produto>> obterTodosProdutos() async {
-    final response = await http.get(Uri.parse('$baseUrl/produtos'));
+    final response = await http.get(
+      Uri.parse('$baseUrl/produtos'),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ${AppController.instance.token}'
+      },
+    );
 
     if (response.statusCode == 200) {
       final List<dynamic> produtosJson = json.decode(response.body);
-      return produtosJson.map((produtoJson) => Produto.fromJson(produtoJson)).toList();
+      return produtosJson
+          .map((produtoJson) => Produto.fromJson(produtoJson))
+          .toList();
     } else {
       throw Exception('Falha ao carregar produtos');
     }
@@ -31,7 +39,10 @@ class ProdutoService {
   Future<Produto> salvarProduto(Produto produto) async {
     final response = await http.post(
       Uri.parse('$baseUrl/produtos'),
-      headers: {'Content-Type': 'application/json'},
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ${AppController.instance.token}'
+      },
       body: json.encode(produto.toJson()),
     );
 

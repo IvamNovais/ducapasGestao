@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:interno/models/Produto.dart';
-import 'package:interno/pages/CreateProduto.dart';
-import 'package:interno/services/ProdutoServices.dart';
+import 'package:interno/services/AlertaServices.dart';
 
-class Produtos extends StatefulWidget {
-  const Produtos({super.key});
+class Alertas extends StatefulWidget {
+  const Alertas({super.key});
 
   @override
-  State<Produtos> createState() => _ProdutosState();
+  State<Alertas> createState() => _AlertasState();
 }
 
-class _ProdutosState extends State<Produtos> {
+class _AlertasState extends State<Alertas> {
   List<Produto> tabela = [];
   @override
   void initState() {
     super.initState();
-    ProdutoServices().obterTodosProdutos().then((List<Produto> value) => {
+    AlertaServices().getAlertasEstoque().then((List<Produto> value) => {
           setState(() {
             tabela = value;
           })
@@ -28,8 +27,9 @@ class _ProdutosState extends State<Produtos> {
       body: ListView.separated(
           itemBuilder: (BuildContext context, int index) {
             return ListTile(
-                leading: Text(tabela[index].categoria),
-                title: Text(tabela[index].descricao),
+                leading: const Icon(Icons.warning),
+                title:
+                    Text("${tabela[index].descricao} esta com o estoque baixo"),
                 trailing: ElevatedButton(
                   onPressed: () {},
                   child: const Icon(Icons.arrow_drop_down_circle_outlined),
@@ -38,15 +38,6 @@ class _ProdutosState extends State<Produtos> {
           padding: const EdgeInsets.all(16),
           separatorBuilder: (_, __) => const Divider(),
           itemCount: tabela.length),
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.add),
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const CreateProduto()),
-          );
-        },
-      ),
     );
   }
 }
