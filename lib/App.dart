@@ -16,6 +16,8 @@ class AppState extends State<App> {
     const Tab(text: 'produtos'),
     const Tab(text: 'Financeiro'),
     const Tab(text: 'Vendas'),
+    const Tab(text: 'Clientes'),
+    const Tab(text: 'Fornecedores'),
     const Tab(text: 'Encomendas'),
   ];
   @override
@@ -43,6 +45,8 @@ class AppState extends State<App> {
                   Produtos(),
                   Financeiro(),
                   Text('Vendas'),
+                  Text('clientes'),
+                  Text('fornecedores'),
                   Text('Encomendas'),
                 ],
               ),

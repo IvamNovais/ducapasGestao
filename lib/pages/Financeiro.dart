@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:interno/pages/Despesas.dart';
+import 'package:interno/pages/Receitas.dart';
 
 class Financeiro extends StatefulWidget {
   const Financeiro({super.key});
@@ -35,8 +37,8 @@ class _FinanceiroState extends State<Financeiro> {
           ),
           body: const TabBarView(
             children: <Widget>[
-              Text('Vendas'),
-              Text('Encomendas'),
+              Despesas(),
+              Receitas(),
             ],
           ),
         );

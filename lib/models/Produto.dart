@@ -1,12 +1,12 @@
 
 class Produto {
-  final String id;
-  final String descricao;
-  final String categoria;
-  final double precoCusto;
-  final double precoVenda;
-  final int quantidadeEstoque;
-  final int quantidadeEstoqueMinima;
+  String id;
+  String descricao;
+  String categoria;
+  double precoCusto;
+  double precoVenda;
+  int quantidadeEstoque;
+  int quantidadeEstoqueMinima;
 
   Produto({
     required this.id,
