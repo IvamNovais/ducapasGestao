@@ -19,21 +19,14 @@ class _FinanceiroState extends State<Financeiro> {
     return Scaffold(
         body: DefaultTabController(
       length: tabs.length,
-      // The Builder widget is used to have a different BuildContext to access
-      // closest DefaultTabController.
       child: Builder(builder: (BuildContext context) {
         final TabController tabController = DefaultTabController.of(context);
-        tabController.addListener(() {
-          if (!tabController.indexIsChanging) {
-            // Your code goes here.
-            // To get index of current tab use tabController.index
-          }
-        });
         return Scaffold(
           appBar: AppBar(
             bottom: TabBar(
               tabs: tabs,
             ),
+            automaticallyImplyLeading: false
           ),
           body: const TabBarView(
             children: <Widget>[

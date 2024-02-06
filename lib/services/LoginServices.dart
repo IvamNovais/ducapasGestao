@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:interno/App.dart';
+import 'package:interno/HomePage.dart';
 import 'package:interno/controllers/AppController.dart';
 import 'package:interno/models/Login.dart';
 import 'package:http/http.dart' as http;
@@ -23,7 +24,7 @@ class LoginServices {
     AppController.instance.saveToken(token);
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => const App()),
+      MaterialPageRoute(builder: (context) => const HomePage()),
     );
   }
 }

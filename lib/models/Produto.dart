@@ -1,4 +1,6 @@
 
+import 'package:interno/models/Marca.dart';
+
 class Produto {
   String id;
   String descricao;
@@ -7,6 +9,7 @@ class Produto {
   double precoVenda;
   int quantidadeEstoque;
   int quantidadeEstoqueMinima;
+  Marca marca;
 
   Produto({
     required this.id,
@@ -16,6 +19,7 @@ class Produto {
     required this.precoVenda,
     required this.quantidadeEstoque,
     required this.quantidadeEstoqueMinima,
+    required this.marca
   });
 
   factory Produto.fromJson(Map<String, dynamic> json) {
@@ -27,6 +31,7 @@ class Produto {
       precoVenda: json['precoVenda'].toDouble(),
       quantidadeEstoque: json['quantidadeEstoque'],
       quantidadeEstoqueMinima: json['quantidadeEstoqueMinima'],
+      marca: json['marca'] != null ? Marca.fromJson(json['marca']):Marca(id: "", nome: "", produtos: [])
     );
   }
 
@@ -39,6 +44,7 @@ class Produto {
       'precoVenda': precoVenda,
       'quantidadeEstoque': quantidadeEstoque,
       'quantidadeEstoqueMinima': quantidadeEstoqueMinima,
+      'marca': marca.toJson(),
     };
   }
 }
